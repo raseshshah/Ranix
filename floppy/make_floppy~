@@ -1,0 +1,11 @@
+#make floppy image
+
+#sudir path
+absdir=./floppy/
+floppy.img:$(absdir)bootloader/bootloader.bin
+
+	#create floppy image
+	dd if=/dev/zero of=$(absdir)floppy.img bs=512 count=2880
+
+	#load primary bootloader into floppy image	
+	dd if=./bootloader/bootloader.bin of=$(absdir)floppy.img	

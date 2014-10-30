@@ -1,0 +1,5 @@
+#!/bin/bash
+# My first script
+make -f ./bootloader/makeBootLoader
+bochs -f ./bochs/config
+

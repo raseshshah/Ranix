@@ -1,0 +1,14 @@
+subdir=bootloader/
+absdir=$(ranix_dir)$(subdir)
+
+$(absdir)bootloader.bin:$(absdir)bootloader.elf
+	objcopy -O binary $(absdir)bootloader.elf $(absdir)bootloader.bin
+
+$(absdir)bootloader.elf:$(absdir)bootloader.o $(absdir)entry.ld
+	ld -static -T$(absdir)entry.ld -nostdlib --nmagic $(absdir)bootloader.o -o $(absdir)bootloader.elf
+
+$(absdir)bootloader.o:$(absdir)bootloader.c
+	gcc -c -g -Os -march=i686 -ffreestanding -Wall -Werror $(absdir)bootloader.c -o $(absdir)bootloader.o
+
+
+

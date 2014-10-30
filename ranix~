@@ -1,0 +1,12 @@
+#!/bin/bash
+# Ranix OS
+
+#create the bootloader
+make -f ./bootloader/make_bootloader
+
+#create floppy image
+make -f ./floppy/make_floppy 
+
+#run bochs emulator
+#bochs -f ./bochs/config
+
