@@ -2,10 +2,13 @@
 
 #sudir path
 absdir=./floppy/
-floppy.img:$(absdir)bootloader/bootloader.bin
+prim_binfile=./primary_bootloader/bootloader.bin
+ker_binfile=./kernel/kernel.bin
+floppy.img:$(prim_binfile)
 
-	#create floppy image
 	dd if=/dev/zero of=$(absdir)floppy.img bs=512 count=2880
-
-	#load primary bootloader into floppy image	
-	dd if=./bootloader/bootloader.bin of=$(absdir)floppy.img	
+	#load primary bootloader into floppy MBR
+	dd if=$(prim_binfile) of=$(absdir)floppy.img bs=512 count=2880
+	
+	#load kernel into floppy
+	dd if=$(ker_binfile) of=$(absdir)floppy.img skip=1 seek=1 bs=512 count=2879

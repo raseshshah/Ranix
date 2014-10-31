@@ -2,7 +2,10 @@
 # Ranix OS
 
 #create the bootloader
-make -f ./bootloader/make_bootloader
+make -f ./primary_bootloader/make_bootloader
+
+#create kernel image
+make -f ./kernel/make_kernel
 
 #create floppy image
 make -f ./floppy/make_floppy 
