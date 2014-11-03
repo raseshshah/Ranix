@@ -5,7 +5,7 @@ absdir=./kernel/
 
 #create bootloder file 	
 $(absdir)kernel.bin:$(absdir)kernel.elf
-	objcopy -O binary $(absdir)kernel.o $(absdir)kernel.bin
+	objcopy -O binary $(absdir)kernel.elf $(absdir)kernel.bin
 
 #link kernel object file with entry file
 $(absdir)kernel.elf:$(absdir)kernel.o $(absdir)entry.ld

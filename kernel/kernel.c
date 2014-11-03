@@ -1,18 +1,19 @@
 /*generate 16-bit code*/
 __asm__(".code16\n");
-__asm__("jmpl $0x1000,$main\n");
-
-void printString() 
+__asm__("jmpl $0x1000,$main");
+void printString(const char *ptrs) 
 {
-	char *pStr="Welcome Ran!x\0";
+	while(*ptrs)
+{
           __asm__ __volatile__ (
-               "int $0x10" : : "a"(0x0e00 | *pStr), "b"(0x0007) 
+               "int $0x10" : : "a"(0x0e00 | *ptrs), "b"(0x0007) 
           );
-          ++pStr;
-     }
+	ptrs++;
+}
+}
 void main() 
 {
-	printString();
+	printString("\n\rwelcome Ran!x Kernel");
 	__asm__ __volatile__ ("hlt");
 }
 
