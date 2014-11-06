@@ -10,6 +10,4 @@ make -f ./kernel/make_kernel
 #create floppy image
 make -f ./floppy/make_floppy 
 
-#run bochs emulator
-bochs -f ./bochs/config
 

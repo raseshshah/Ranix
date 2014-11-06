@@ -6,7 +6,6 @@ prim_binfile=./primary_bootloader/bootloader.bin
 ker_binfile=./kernel/kernel.bin
 floppy.img:$(prim_binfile)
 
-	dd if=/dev/zero of=$(absdir)floppy.img bs=512 count=2880
 	#load primary bootloader into floppy MBR
 	dd if=$(prim_binfile) of=$(absdir)floppy.img bs=512 count=2880
 	
