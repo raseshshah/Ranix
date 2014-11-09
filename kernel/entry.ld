@@ -5,6 +5,5 @@ SECTIONS
      {
           _ftext = .;
      }
-
 } 
 

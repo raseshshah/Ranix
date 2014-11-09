@@ -12,8 +12,6 @@ $(absdir)kernel.elf:$(absdir)kernel.o $(absdir)entry.ld
 	ld -static -T$(absdir)entry.ld -nostdlib --nmagic $(absdir)kernel.o -o $(absdir)kernel.elf
 
 #create kernel objectfile
-$(absdir)kernel.o:$(absdir)kernel.c
-	gcc -std=c99 -c -g -Os -march=i686 -ffreestanding -Wall -Werror $(absdir)kernel.c -o $(absdir)kernel.o
-
-
+$(absdir)kernel.o:$(absdir)*.c 
+ 	gcc -std=c99 -c -g -Os -march=i686 -ffreestanding -Wall -Werror $(absdir)kernel.c -o $(absdir)kernel.o
 
