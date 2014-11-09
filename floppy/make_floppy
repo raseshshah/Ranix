@@ -10,4 +10,4 @@ floppy.img:$(prim_binfile)
 	dd if=$(prim_binfile) of=$(absdir)floppy.img bs=512 count=2880
 	
 	#load kernel into floppy
-	dd if=$(ker_binfile) of=$(absdir)floppy.img seek=1 bs=512 count=2879
+	dd if=$(ker_binfile) of=$(absdir)floppy.img seek=1 bs=512 count=2880
